@@ -27,7 +27,7 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 // Add your functions below:
 
-
+/* OPTION 1 with two FOR loops
 function validateCred(array) {
     let checkedArray = [];
     
@@ -52,6 +52,27 @@ function validateCred(array) {
     // if the remainder of the sum divided by ten is 0, the card is valid
     return sum % 10 === 0;
 };
+*/
+
+// OPTION 2 with single FOR loop
+function validateCred(array) {
+    let sum = 0;
+
+    for (let i = (array.length - 1); i >= 0; i --) {
+        let currentValue = array[i];
+         
+        if ((array.length - 1 - i) % 2 === 1) {
+            currentValue *= 2;
+            if (currentValue > 9) {
+                currentValue -= 9;
+            };
+        };
+        sum = sum + currentValue;
+    };
+    
+    return sum % 10 === 0;
+};
+
 
 // test
 // console.log(validateCred(valid1));
